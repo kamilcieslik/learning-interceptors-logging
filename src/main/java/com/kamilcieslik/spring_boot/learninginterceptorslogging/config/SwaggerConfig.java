@@ -1,4 +1,4 @@
-package com.kamilcieslik.spring_boot.learninginterceptorslogging;
+package com.kamilcieslik.spring_boot.learninginterceptorslogging.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

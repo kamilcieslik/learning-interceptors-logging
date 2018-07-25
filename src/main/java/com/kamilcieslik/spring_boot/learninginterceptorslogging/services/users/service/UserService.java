@@ -1,12 +1,11 @@
 package com.kamilcieslik.spring_boot.learninginterceptorslogging.services.users.service;
 
-import com.kamilcieslik.spring_boot.learninginterceptorslogging.exceptions.InternalException;
 import com.kamilcieslik.spring_boot.learninginterceptorslogging.persistence.dao.UserDAO;
 import com.kamilcieslik.spring_boot.learninginterceptorslogging.persistence.entity.Address;
 import com.kamilcieslik.spring_boot.learninginterceptorslogging.persistence.entity.User;
+import com.kamilcieslik.spring_boot.learninginterceptorslogging.services.users.exception.UserServiceException;
 import com.kamilcieslik.spring_boot.learninginterceptorslogging.services.users.model.UserInfoResponse;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -39,13 +38,14 @@ public class UserService {
         Optional<User> optionalUserInfoResponse = userDAO.findById(userId);
 
         if (!optionalUserInfoResponse.isPresent())
-            throw new InternalException("Nie znaleziono użytkownika o wskazanym ID.", HttpStatus.NOT_FOUND);
+            throw new UserServiceException("Nie znaleziono użytkownika o wskazanym ID.", "USR_NOT_FND");
 
         User user = optionalUserInfoResponse.get();
         Optional<Address> optionalAddress = Optional.ofNullable(user.getAddress());
 
         if (!optionalAddress.isPresent())
-            throw new InternalException("Użytkownik o wskazanym ID nie posiada danych adresowych.", HttpStatus.NOT_FOUND);
+            throw new UserServiceException("Użytkownik o wskazanym ID nie posiada danych adresowych.",
+                    "ADDR_DATA_NOT_FND");
 
         Address address = optionalAddress.get();
 
