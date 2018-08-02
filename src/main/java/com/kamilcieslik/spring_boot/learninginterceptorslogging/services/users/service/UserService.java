@@ -6,6 +6,7 @@ import com.kamilcieslik.spring_boot.learninginterceptorslogging.persistence.enti
 import com.kamilcieslik.spring_boot.learninginterceptorslogging.services.users.exception.UserServiceException;
 import com.kamilcieslik.spring_boot.learninginterceptorslogging.services.users.model.UserInfoResponse;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -13,9 +14,13 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @Service
-@AllArgsConstructor
 public class UserService {
-    private UserDAO userDAO;
+    private final UserDAO userDAO;
+
+    @Autowired
+    public UserService(UserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
 
     public Iterable<UserInfoResponse> getUsersInfo() {
         return StreamSupport.stream(userDAO.findAll().spliterator(), false)
