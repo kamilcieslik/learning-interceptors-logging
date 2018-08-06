@@ -21,14 +21,7 @@ public class SwaggerConfig {
             "Kamil Cieślik", "https://github.com/kamilcieslik", "kamil.cieslik@protonmail.com");
 
     private static final ApiInfo DEFAULT_API_INFO = new ApiInfoBuilder()
-            .title("Wishes Reminder")
-            .description("REST API dla aplikacji webowej umożliwiającej przeglądanie/edytowanie dat urodzin oraz " +
-                    "imienin. Program pozwala na edycję danych osobowych użytkownika, logowanie/rejestrację, " +
-                    "dodawanie danych bliskich użytkownikowi osób (relacja: członek rodziny, znajomy, " +
-                    "przyjaciel.., data urodzenia, dane osobowe, dane adresowe) oraz pozwala na definiowanie " +
-                    "szablonów życzeń, ich modyfikację oraz wysyłanie życzeń w formie listu/email do wybranych osób. " +
-                    "Dane o zbliżających się rocznicach urodzin/imienin wyświetlane są w przystępnej formie " +
-                    "(dzień urodzin/imienin, ilość dni do zbliżającej się rocznicy, data rocznicy).")
+            .title("Maven + Jenkins + Docker TEST")
             .version("1.0")
             .contact(DEFAULT_CONTACT)
             .license("Apache 2.0")
